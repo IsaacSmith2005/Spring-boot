@@ -79,7 +79,7 @@ public class StudentmanagerApplication {
 		}
 	}
 
-	@GetMapping("/student")
+	@GetMapping("/students")
 	public List<Student> getStudents() {
 		List<Student> list = new ArrayList<>();
 		list.add(new Student(1, "A", 20));
