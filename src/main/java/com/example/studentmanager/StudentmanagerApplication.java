@@ -85,5 +85,6 @@ public class StudentmanagerApplication {
 		list.add(new Student(1, "A", 20));
 		list.add(new Student(2, "B", 21));
 		return list;	
-	}
+	}	
 }
+	
