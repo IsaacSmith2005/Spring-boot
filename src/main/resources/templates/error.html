@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lỗi</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .error-container { width: 600px; margin: 0 auto; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 20px; border-radius: 4px; }
+        h1 { color: #721c24; }
+        p { color: #721c24; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .error-details { background-color: #fff; padding: 10px; margin-top: 10px; border-radius: 4px; font-family: monospace; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+
+<div class="error-container">
+    <h1>Lỗi xảy ra!</h1>
+    <p th:if="${message}" th:text="${message}">Có lỗi xảy ra khi xử lý yêu cầu của bạn.</p>
+    <p th:if="${error}">
+        <strong>Chi tiết lỗi:</strong>
+        <div class="error-details" th:text="${error}"></div>
+    </p>
+    <p><a href="/students">← Quay lại danh sách sinh viên</a></p>
+</div>
+
+</body>
+</html>
