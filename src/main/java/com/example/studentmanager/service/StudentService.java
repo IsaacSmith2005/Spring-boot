@@ -62,6 +62,10 @@ public class StudentService {
         }
         return false;
     }
+
+    public List<Student> searchByName(String keyword) {
+        return repository.findByNameContainingIgnoreCase(keyword);
+    }
 }
 
 
