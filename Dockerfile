@@ -1,14 +1,17 @@
-# 1. Base image Java 17 (phù hợp Spring Boot 3)
-FROM eclipse-temurin:21-jdk-jammy
+# ===== STAGE 1: Build =====
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /build
 
-# 2. Thư mục làm việc trong container
+COPY pom.xml .
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+# ===== STAGE 2: Run =====
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# 3. Copy file jar vào container
-COPY target/*.jar app.jar
+COPY --from=build /build/target/*.jar app.jar
 
-# 4. Expose port (Render dùng biến PORT)
 EXPOSE 8080
-
-# 5. Chạy Spring Boot
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
